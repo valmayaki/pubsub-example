@@ -1,0 +1,18 @@
+{
+  "name": "pubsub-example",
+  "version": "1.0.0",
+  "description": "A project to demonstration http pubsub pattern between application",
+  "main": "index.js",
+  "author": "Valentine Mayaki <mxvmayaki@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "awilix": "^4.2.5",
+    "express": "^4.17.1",
+    "ioredis": "^4.16.2"
+  },
+  "devDependencies": {
+    "jest": "^25.3.0",
+    "supertest": "^4.0.2"
+  }
+}
