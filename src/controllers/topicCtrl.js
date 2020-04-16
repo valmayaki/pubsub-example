@@ -1,7 +1,7 @@
 
 const uuidV4 = require('uuid').v4;
 
-class SubscriptionController {
+class TopicController {
 
     constructor(){}
 
@@ -21,5 +21,8 @@ class SubscriptionController {
             createdAt: createdAt
         })
     }
+    publishEvent = (request, response) => {
+        const data  = request.body
+    }
 }
-module.exports = SubscriptionController
+module.exports = TopicController
