@@ -8,8 +8,12 @@
   "private": false,
   "dependencies": {
     "awilix": "^4.2.5",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "ioredis": "^4.16.2"
+    "ioredis": "^4.16.2",
+    "morgan": "^1.10.0",
+    "swagger-ui-express": "^4.1.4",
+    "uuid": "^7.0.3"
   },
   "devDependencies": {
     "jest": "^25.3.0",
@@ -19,12 +23,11 @@
   "scripts": {
     "start": "node src/index.js",
     "develop": "nodemon src/index.js",
-    "test": "jest",
-    "pretest": "cross-env export NODE_ENV=test"
+    "test": "jest"
   },
   "jest": {
     "testEnvironment": "node",
-    "coveragePathIgnorePatterns":[
+    "coveragePathIgnorePatterns": [
       "node_modules/"
     ]
   }
