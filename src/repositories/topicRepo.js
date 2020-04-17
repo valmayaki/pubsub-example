@@ -22,5 +22,8 @@ class TopicRepository {
        return this.newTopic(topicName);
 
     }
+    getSubscriptions(topic){
+        return topic.getSubscriptions();
+    }
 }
 module.exports = TopicRepository

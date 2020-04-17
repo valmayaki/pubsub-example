@@ -37,5 +37,8 @@
     "coveragePathIgnorePatterns": [
       "node_modules/"
     ]
+  },
+  "nodemonConfig": {
+    "ignore": ["test/*", "docs/*"]
   }
 }

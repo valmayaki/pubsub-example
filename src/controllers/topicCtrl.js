@@ -5,9 +5,8 @@ const Event = require('../models/event')
 
 class TopicController {
 
-    constructor({ topicRepo, eventService }) {
-        this.topicRepo = topicRepo
-        this.eventService = eventService;
+    constructor({ topicService }) {
+        this.topicService = topicService
     }
 
     /**
@@ -21,8 +20,7 @@ class TopicController {
         const topicName = request.params.topic;
         // const client = request.client;
         const url = request.body.url;
-        const topic = this.topicRepo.findOrNew(topicName);
-        const subscription = topic.subscribe(url);
+        const subscription = this.topicService.subscribe(topicName, url)
         response.status(201).json({
             subscriptionId: subscription.id,
             topic: subscription.topic.name,
@@ -39,14 +37,11 @@ class TopicController {
      */
     publishEvent = async (request, response) => {
         const topicName = request.params.topic;
-        const topic = this.topicRepo.findOrNew(topicName)
         const data  = request.body;
-        // const client = request.client;
-        const event = new Event(data, topic);
-        await this.eventService.publish(event);
+        const event =await this.topicService.publish(topicName, data);
         response.status(200).json({
-            eventId: '',
-            topic: topic.name,
+            eventId: event.id,
+            topic: event.topic.name,
             data: event.data
         })
     }
