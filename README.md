@@ -3,12 +3,12 @@ This is a Node.js project that demonstrate the Observer pattern using Http
 
 ### How to use
 - Clone the project to a directory in your computer
-- Navigate to the directory where you clone the project into
-- Start the broker server by running command `yarn start` in your terminal
-- Start a client server by running command `NODE_PORT=3005 yarn start` in another terminal of the project directory
+- Navigate to the directory where you cloned the project into in your Operating System console
+- Start the broker server by running command `yarn start` in your console. This starts the broker server with address `http://localhost:3003`
+- Start a client server by running command `NODE_PORT=3005 yarn start` in another console of the project directory
 - To subscribe client server run command
 ```bash
-curl -X POST -d '{ "url": "http://localhost:3005/event"}' -H "Content-Type: application/json"  http://localhost:3003/subscribe/topic1`
+curl -X POST -d '{ "url": "http://localhost:3005/event"}' -H 'Content-Type: application/json'  http://localhost:3003/subscribe/topic1`
 ```
 - To publish to broker server run command
 ```bash
