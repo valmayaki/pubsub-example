@@ -21,5 +21,16 @@ curl -X POST -H "Content-Type: application/json" -d '{"message": "hello"}' http:
     data: { message: 'hello' }
 }
 ```
-
+- To run the Typescript version of the application Run
+```bash
+yarn start:ts
+```
+or
+```bash
+yarn develop:ts
+```
+- To run the test suite
+```
+yarn test
+```
 
