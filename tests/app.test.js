@@ -36,14 +36,6 @@ describe("App test", () => {
     it("Publishes event to clients", async () => {
         const topic = "web-dev";
         const message = "Hello Word";
-        function axiosMock(){
-            return {
-                post: (url, data, options) => Promise.resolve({
-                    topic: topic,
-                    data: { message }
-                })
-            }
-        }
         const httpClientMock = jest.fn(() => ({
             post: (url, data, options) => Promise.resolve({
                 topic: topic,
