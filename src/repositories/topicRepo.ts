@@ -2,6 +2,7 @@ import Topic from '../models/topic';
 
 export default class TopicRepository {
     static topics: Topic[] = [];
+
     constructor(){}
 
     newTopic(topicName: string){
@@ -10,10 +11,15 @@ export default class TopicRepository {
         return topic;
     }
     find(topicName: string){
-       return TopicRepository.topics.find((topic) => {
-           return topic.name === topicName;
-       })
+        return TopicRepository.topics.find((topic) => {
+            return topic.name === topicName;
+        })
     }
+
+    addSubscriberForTopic(topic: Topic, { callbackUrl }: { callbackUrl: string; }) {
+        return topic.subscribe(callbackUrl);
+    }
+
     findOrNew(topicName: string){
        let topic = this.find(topicName);
        if (topic){
@@ -22,6 +28,7 @@ export default class TopicRepository {
        return this.newTopic(topicName);
 
     }
+
     getSubscriptions(topic: Topic){
         return topic.getSubscriptions();
     }

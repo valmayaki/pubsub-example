@@ -22,14 +22,17 @@
     "@babel/preset-env": "^7.9.5",
     "@types/cors": "^2.8.6",
     "@types/express": "^4.17.6",
+    "@types/jest": "^25.2.1",
     "@types/morgan": "^1.9.0",
     "@types/node": "^13.11.1",
+    "@types/supertest": "^2.0.8",
     "@types/uuid": "^7.0.2",
     "babel-jest": "^25.3.0",
     "jest": "^25.3.0",
     "nock": "^12.0.3",
     "nodemon": "^2.0.3",
     "supertest": "^4.0.2",
+    "ts-jest": "^25.4.0",
     "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
   },
@@ -43,6 +46,9 @@
   "jest": {
     "verbose": true,
     "testEnvironment": "node",
+    "transform": {
+      "^.+\\.(t)s$": "ts-jest"
+    },
     "coveragePathIgnorePatterns": [
       "node_modules/"
     ]
