@@ -63,6 +63,5 @@ describe("App test", () => {
         expect(response.body).toHaveProperty('eventId')
         expect(response.body.topic).toEqual(topic)
         expect(httpClientMock).toHaveBeenCalled();
-        // expect(scope.isDone()).toBeTruthy()
     })
 })
