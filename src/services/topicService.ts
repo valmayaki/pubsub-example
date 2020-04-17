@@ -66,7 +66,7 @@ export default class TopicService {
      */
     subscribe(topicName: string, callbackUrl: string): Subscription{
         const topic = this.topicRepo.findOrNew(topicName);
-        const subscription = topic.subscribe(callbackUrl);
+        const subscription = this.topicRepo.addSubscriberForTopic(topic, { callbackUrl });
         return subscription;
     }
 }

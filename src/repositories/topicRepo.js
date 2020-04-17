@@ -22,6 +22,9 @@ class TopicRepository {
        return this.newTopic(topicName);
 
     }
+    addSubscriberForTopic(topic, { callbackUrl }) {
+        return topic.subscribe(callbackUrl);
+    }
     getSubscriptions(topic){
         return topic.getSubscriptions();
     }

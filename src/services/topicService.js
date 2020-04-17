@@ -60,7 +60,7 @@ class TopicService {
      */
     subscribe(topicName, callbackUrl){
         const topic = this.topicRepo.findOrNew(topicName);
-        const subscription = topic.subscribe(callbackUrl);
+        const subscription = this.topicRepo.addSubscriberForTopic(topic, { callbackUrl });
         return subscription;
     }
 }
