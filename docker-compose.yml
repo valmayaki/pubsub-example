@@ -1,0 +1,28 @@
+version: '3'
+services:
+  broker:
+    image: node:12
+    environment:
+      - "NODE_PORT=3003"
+      - "NODE_SERVER_NAME=Broker"
+    ports:
+      - "3003:3003"
+    command: "yarn start"
+
+  client1:
+    image: node:12
+    environment:
+      - "NODE_PORT=3004"
+      - "NODE_SERVER_NAME=Client1"
+    ports:
+      - "3004:3004"
+    command: "yarn start"
+
+  client2:
+    image: node:12
+    environment:
+      - "NODE_PORT=3005"
+      - "NODE_SERVER_NAME=Client2"
+    ports:
+      - "3005:3005"
+    command: "yarn start"

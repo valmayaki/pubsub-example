@@ -1,4 +1,5 @@
 const app = require('../src/app');
+const nock = require('nock');
 const request = require('supertest');
 describe("App test", () => {
     it("App should be valid", async () => {
@@ -16,5 +17,25 @@ describe("App test", () => {
         expect(response.body).toHaveProperty("subscriptionId");
         expect(response.body).toHaveProperty("topic")
         expect(response.body.topic).toBe(topic)
+    })
+    it("Publishes event to clients", async () => {
+        const topic = "web-dev";
+        const message = "Hello Word";
+        // app.container.register({})
+        const scope = nock('http://localhost:8000')
+            .post('/event')
+            .reply(200, {
+                topic: topic,
+                data: message
+            })
+        const response = await request(app)
+            .post(`/publish/${topic}`)
+            .send({
+                message
+            });
+        console.log(response.error)
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toHaveProperty('eventId')
+        expect(response.body.topic).toEqual(topic)
     })
 })

@@ -1,10 +1,14 @@
-const {createContainer, Lifetime, asClass} = require('awilix');
+const {createContainer, Lifetime, asClass, asFunction, asValue} = require('awilix');
+const axios = require('axios');
 
 const container = createContainer();
 
+
 container.loadModules([
+    ['src/middlewares/**/*.js', {register: asFunction, lifetime: Lifetime.SINGLETON}],
+    ['src/models/**/*.js', {register: asValue, lifetime: Lifetime.SINGLETON}],
+    'src/repositories/**/*.js',
     'src/controllers/**/*.js',
-    'src/models/**/*.js',
     'src/services/**/*.js'
 ],{
     formatName: 'camelCase',
@@ -16,5 +20,8 @@ container.loadModules([
         register: asClass
       }
 })
+container.register({
+    httpClient: asFunction(() => axios)
+});
 
 module.exports = container;
